@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consumo</title>
+    <script>
+        function check(){
+            const edDistancia = document.getElementById("edDistancia");
+            const edTiempo = document.getElementById("edTiempo");
+            const edConsumoMedio = document.getElementById("edConsumoMedio");
+            var toret = true;
+
+            if(isNaN(edDistancia.value.trim()) || edDistancia.value.trim().length == 0 || edDistancia.value.trim() < 0){
+                toret = false;
+            }else if(isNaN(edTiempo.value.trim()) || edTiempo.value.trim().length == 0 || edTiempo.value.trim() <= 0){
+                toret = false;
+            }else if(isNaN(edConsumoMedio.value.trim()) || edConsumoMedio.value.trim().length == 0 || edConsumoMedio.value.trim() < 0){
+                toret = false;
+            }
+
+            return toret;
+        }
+    </script>
+</head>
+<body>
+    <h1>Consumo</h1>
+
+    <form id="frmConsumo"
+        action="/consumo"
+        method="post"
+        onsubmit="return check()">
+
+        <label for="edDistancia">Kilómetros: </label>
+        <input type="text" id="edDistancia" name="edDistancia" /><br><br>
+        <label for="edTiempo">Tiempo ( en horas ): </label>
+        <input type="number" id="edTiempo" name="edTiempo" /><br><br>
+        <label for="edConsumoMedio">Consumo medio ( litros / 100 km ): </label>
+        <input type="text" id="edConsumoMedio" name="edConsumoMedio" /><br><br>
+        <input type="submit" value="Calcular" />
+    </form>
+</body>
+</html>
